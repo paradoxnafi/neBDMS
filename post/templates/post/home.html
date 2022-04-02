@@ -1,0 +1,24 @@
+{% extends 'post/base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    <div class="container text-center">
+        <h2>Blood Donor Management System</h2>
+
+        {% for eachPost in post %}
+
+        <p>
+            <b>{{eachPost.author_name}}</b><br/>
+            <i>{{eachPost.description}}</i><br/>
+            <b>Blood group: </b>{{eachPost.blood_group}}<br/>
+            <b>Blood required: </b>{{eachPost.required_bags}} bags<br/>
+            <b>Address: </b> {{eachPost.address}}<br>
+            <b>Deadline: </b>{{eachPost.deadline}}<br/>
+            <b>Contact number: </b> {{eachPost.contact_number}}
+        
+        </p>
+        <br/>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
