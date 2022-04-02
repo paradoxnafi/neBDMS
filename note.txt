@@ -82,16 +82,8 @@
 
 21. bootstrap
 	pip install django-bootstrap-v5
-
->>> next play
-	https://www.youtube.com/watch?v=tTvSl3RHBjE&list=PLgCYzUzKIBE_dil025VAJnDjNZHHHR9mW&index=16
-
-# code iwth mitch project link
-	https://github.com/mitchtabian/CodingWithMitch-Blog-Course/blob/Creating-a-Custom-User-Model-(Django)/src/account/models.py
-
-
-
-
+	
+	
 
 
 
