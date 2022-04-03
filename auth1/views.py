@@ -8,7 +8,7 @@ def loginUserView(request):
 
     user = request.user
     if user.is_authenticated:
-        return redirect('registerUser')
+        return redirect('home')
     
     if request.POST:
         form = LoginForm(request.POST)
@@ -19,7 +19,7 @@ def loginUserView(request):
 
             if user:
                 login(request, user)
-                return redirect('registerUser')
+                return redirect('home')
 
     else:
         form = LoginForm()
@@ -49,6 +49,12 @@ def registerUserView(request):
 def logoutUserView(request):
     logout(request)
     return redirect('home')
+
+def profileUserView(request):
+    context = {}
+    user_name = request.user
+    context['user_name'] = user_name
+    return render(request, 'auth1/profile.html', context)
 
 
 

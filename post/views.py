@@ -16,3 +16,4 @@ def createpost(request):
         newform.user = request.user
         newform.save()
         return redirect('home')
+
