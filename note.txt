@@ -79,11 +79,11 @@
 	$ from django.contrib.auth.models import User
 	$ User.objects.get(username="joebloggs", is_superuser=True).delete()
 
-
 21. bootstrap
-	pip install django-bootstrap-v5
+	pip install django-bootstrap-v4
 	
-	
+22. Author app
+	pip install django-author	
 
 
 

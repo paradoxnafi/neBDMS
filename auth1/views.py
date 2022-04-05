@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, AccountUpdateForm
+from .models import RegisterUser
 
 def loginUserView(request):
 
@@ -52,10 +53,37 @@ def logoutUserView(request):
 
 def profileUserView(request):
     context = {}
-    user_name = request.user
-    context['user_name'] = user_name
+    profile = RegisterUser.objects.get(id=request.user.id)
+    context['profile'] = profile
     return render(request, 'auth1/profile.html', context)
 
+def updateProfileView(request):
 
+    if not request.user.is_authenticated:
+        return redirect('logoutUserView')
+
+    context = {}
+    
+    if request.POST:
+        form = AccountUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+        return redirect('profileUser')
+    else:
+        form = AccountUpdateForm(
+            initial = {
+                "email": request.user.email,
+                "username": request.user.username,
+                "name": request.user.name,
+                "contact_number": request.user.contact_number,
+                "address": request.user.address,
+                "date_of_birth": request.user.date_of_birth,
+                "nid": request.user.nid,
+                "blood_group": request.user.blood_group,
+            }
+        )
+            
+    context['form'] = form
+    return render(request, 'auth1/update_profile.html', context)
 
 

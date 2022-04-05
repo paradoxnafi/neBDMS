@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} Blood Donor | home {% endblock%}</title>
+    <title>{% block title %} Blood Donor | System {% endblock%}</title>
+    <!-- Loading bootstrap from installed pip moduel django-bootstrap4 -->
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
 </head>
 <body>
     <div id="content", name="content">
         {% block content %}
-            <h2>From base file</h2>
+            
         {% endblock %}
 
     </div>

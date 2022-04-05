@@ -34,3 +34,26 @@ class LoginForm(forms.ModelForm):
         else:
             raise forms.ValidationError("Invalid Email")
 
+class AccountUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = RegisterUser
+        fields = {'email', 'username', 'name', 'contact_number', 'address', 'date_of_birth', 'nid', 'blood_group'}
+
+    def clean_email(self):
+        if self.is_valid():
+            email = self.cleaned_data['email']
+            try:
+                registeruser = RegisterUser.objects.exclude(pk=self.instance.pk).get(email=email)
+            except RegisterUser.DoesNotExist:
+                return email
+            raise forms.ValidationError('Email "%s" is already in use' % registeruser.email)
+
+    def clean_username(self):
+        if self.is_valid():
+            username = self.cleaned_data['username']
+            try:
+                registeruser = RegisterUser.objects.exclude(pk=self.instance.pk).get(username=username)
+            except RegisterUser.DoesNotExist:
+                return username
+            raise forms.ValidationError('Username "%s" is already in use' % registeruser.username)

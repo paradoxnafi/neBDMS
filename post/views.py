@@ -4,7 +4,7 @@ from .forms import PostForm
 
 def home(request):
 
-    post = Post.objects.all()
+    post = Post.objects.order_by('-created_at')
     return render(request, 'post/home.html', {'post': post})
 
 def createpost(request):
@@ -13,7 +13,6 @@ def createpost(request):
     else:
         form = PostForm(request.POST)
         newform = form.save(commit=False)
-        newform.user = request.user
         newform.save()
         return redirect('home')
 
