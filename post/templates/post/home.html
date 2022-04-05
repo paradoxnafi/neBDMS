@@ -5,8 +5,8 @@
 		<h2>Blood Donor Management System</h2>
 
 		{% for items in post %}
-
-		<p align="left">
+		
+			<div class="bg-light" align="left">
 			<b>{{items.author}}</b><br/>
 			<i>{{items.description}}</i><br/>
 			<b>Blood group: </b>{{items.blood_group}}<br/>
@@ -14,9 +14,8 @@
 			<b>Address: </b> {{items.address}}<br>
 			<b>Deadline: </b>{{items.deadlineDate}} before {{items.deadlineTime}}<br/>
 			<b>Contact number: </b> {{items.contact_number}}
-			
-		
-		</p>
+			</div>
+
 		<br/>
 
 		{% endfor %}
