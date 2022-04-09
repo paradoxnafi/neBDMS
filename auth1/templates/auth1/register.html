@@ -1,47 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <h2>Register new user</h2>
+{% extends 'post/base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <!--
-        <input type="text" name="username">
-        <input type="text" name="first_name">
-        <input type="text" name="last_name">
-        <input type="email" name="email">
-        <input type="password" name="password1">
-        <input type="password" name="password2">
-        <input type="textfield" name="contact_number">
-        
-        {{ form.as_p }}
-        -->
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 my-3">
+            <div class="card">
+                <div class="card-header">
+                    <b>Register New User</b>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
 
-        {% for field in registration_form %}
-            <p>
-                {{field.label_tag}}
-                {{field}}
+                        {% for field in registration_form %}
+                            <p>
+                                {{field.label_tag}}
+                                {{field}}
 
-                {% if field.help_text %}
-                    <small style="color:crimson;">{{field.help_tex}}</small>
-                {% endif %}
+                                {% if field.help_text %}
+                                    <small style="color:crimson;">{{field.help_tex}}</small>
+                                {% endif %}
 
-                {% for error in field.errors %}
-                    <p style="color: red;">{{error}}</p>
-                {% endfor %}
-            </p>
-        {% endfor %}
-        <button type="submit" >Create</button>
+                                {% for error in field.errors %}
+                                    <p style="color: red;">{{error}}</p>
+                                {% endfor %}
+                            </p>
+                        {% endfor %}
+                        <button type="submit" >Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-    </form>
-
-</body>
-</html>
+{% endblock %}

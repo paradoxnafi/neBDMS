@@ -2,23 +2,31 @@
 {% block title %} Update Profile {% endblock %}
 {% block content %}
 
-<div class="container text-center">
-    <b>Update Profile</b>
-
-    <form method="POST">
-        {% csrf_token %}
-		<p  align="left">
-			<b>E-mail: {{form.email}}</b> </br></br>
-			<b>Username: {{form.username}}</b> </br></br>
-			<b>Name: {{form.name}}</b> </br></br>
-			<b>Contact Number: {{form.contact_number}}</b> </br></br>
-			<b>Address: {{form.address}}</b> </br></br>
-			<b>Date of Birth: {{form.date_of_birth}}</b> </br></br>
-			<b>NID Number {{form.nid}}</b> </br></br>
-			<b>Blood Group: {{form.blood_group}}</b> </br></br>
-			<button type="submit" >Update Profile</button> </br></br>
-		</p>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 my-3">
+            <div class="card">
+                <div class="card-header">
+                    <b>Update Profile Informations</b>
+                </div>
+                <div class="card-body">
+					<form method="POST">
+						{% csrf_token %}
+							E-mail: {{form.email}} </br>
+							Username: {{form.username}}</br>
+							Name: {{form.name}}</br>
+							Contact Number: {{form.contact_number}}</br>
+							Address: {{form.address}}</br>
+							Date of Birth: {{form.date_of_birth}}</br>
+							NID Number {{form.nid}}</br>
+							Blood Group: {{form.blood_group}}</br>
+							<button type="submit" >Update Profile</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 {% endblock %}

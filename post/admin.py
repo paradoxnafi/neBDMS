@@ -1,7 +1,7 @@
 from django.contrib import admin
 #from django.contrib.auth.admin import UserAdmin
 from django.db import models
-from .models import Post
+from .models import Post, Comment
 
 # class PostAdmin(UserAdmin):
 #     list_display = ('author', 'description', 'address', 'blood_group', 'required_bags', 'deadlineDate', 'deadlineTime', 'contact_number', 'created_at')
@@ -13,3 +13,4 @@ from .models import Post
 #     fieldsets = ()
 
 admin.site.register(Post)
+admin.site.register(Comment)

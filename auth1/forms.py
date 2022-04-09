@@ -17,6 +17,12 @@ class RegistrationForm(UserCreationForm):
            }
         fields = ['username', 'name', 'email', 'password1', 'password2', 'contact_number']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for name, field, in self.fields.items():
+            field.widget.attrs.update({'class' : 'form-control'})
+
 class LoginForm(forms.ModelForm):
 
     password = forms.CharField(label='password', widget=forms.PasswordInput)
@@ -33,6 +39,12 @@ class LoginForm(forms.ModelForm):
                 raise forms.ValidationError("Invalid login")
         else:
             raise forms.ValidationError("Invalid Email")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for name, field, in self.fields.items():
+            field.widget.attrs.update({'class' : 'form-control'})
 
 class AccountUpdateForm(forms.ModelForm):
 
@@ -57,3 +69,9 @@ class AccountUpdateForm(forms.ModelForm):
             except RegisterUser.DoesNotExist:
                 return username
             raise forms.ValidationError('Username "%s" is already in use' % registeruser.username)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for name, field, in self.fields.items():
+            field.widget.attrs.update({'class' : 'form-control'})
